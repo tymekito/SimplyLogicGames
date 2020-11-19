@@ -859,7 +859,7 @@ GameObject:
   - component: {fileID: 869216939}
   - component: {fileID: 869216938}
   m_Layer: 5
-  m_Name: ChceckersText
+  m_Name: CheckersText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -902,7 +902,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Chceckers
+  m_text: Checkers
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b427cce4f42f30245aff7f48fba49d9b, type: 2}
   m_sharedMaterial: {fileID: 5867009239718861706, guid: b427cce4f42f30245aff7f48fba49d9b,

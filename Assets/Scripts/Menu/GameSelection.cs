@@ -38,7 +38,7 @@ public class GameSelection : MonoBehaviour
         gameName = transform.GetChild(currentGame).gameObject.ToString();
     }
 
-    /// <summary>method <c>ChcangeGame</c> choose suitable game index</summary>
+    /// <summary>method <c>ChangeGame</c> choose suitable game index</summary>
     public void ChangeGame(int change)
     {
         if (currentGame == transform.childCount - 1 && change > 0)
