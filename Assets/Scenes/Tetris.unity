@@ -599,11 +599,11 @@ GameObject:
   - component: {fileID: 295985571}
   m_Layer: 0
   m_Name: T-Block
-  m_TagString: Untagged
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &295985569
 Transform:
   m_ObjectHideFlags: 0
@@ -651,6 +651,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db89b4ed6d0b7884fb863dbcfe4afaa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cubes:
+  - {fileID: 71026847}
+  - {fileID: 1850413875}
+  - {fileID: 37630043}
+  - {fileID: 619160057}
 --- !u!1 &336260381
 GameObject:
   m_ObjectHideFlags: 0
@@ -1430,11 +1435,11 @@ GameObject:
   - component: {fileID: 851735408}
   m_Layer: 0
   m_Name: J-Block
-  m_TagString: Untagged
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &851735406
 Transform:
   m_ObjectHideFlags: 0
@@ -1482,6 +1487,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db89b4ed6d0b7884fb863dbcfe4afaa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cubes:
+  - {fileID: 2085288762}
+  - {fileID: 1812922142}
+  - {fileID: 1157291359}
+  - {fileID: 1437793318}
 --- !u!1 &908917315
 GameObject:
   m_ObjectHideFlags: 0
@@ -1495,11 +1505,11 @@ GameObject:
   - component: {fileID: 908917318}
   m_Layer: 0
   m_Name: O-Block
-  m_TagString: Untagged
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &908917316
 Transform:
   m_ObjectHideFlags: 0
@@ -1508,7 +1518,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 908917315}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.5, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2123363761}
@@ -1547,6 +1557,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db89b4ed6d0b7884fb863dbcfe4afaa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cubes:
+  - {fileID: 2123363760}
+  - {fileID: 829585000}
+  - {fileID: 1013360832}
+  - {fileID: 336260381}
 --- !u!1 &942737375
 GameObject:
   m_ObjectHideFlags: 0
@@ -1560,11 +1575,11 @@ GameObject:
   - component: {fileID: 942737378}
   m_Layer: 0
   m_Name: S-Block
-  m_TagString: Untagged
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &942737376
 Transform:
   m_ObjectHideFlags: 0
@@ -1612,6 +1627,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db89b4ed6d0b7884fb863dbcfe4afaa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cubes:
+  - {fileID: 2008258186}
+  - {fileID: 287409476}
+  - {fileID: 674075270}
+  - {fileID: 1177482262}
 --- !u!1 &1013360832
 GameObject:
   m_ObjectHideFlags: 0
@@ -1918,7 +1938,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1205345118}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8, y: 2, z: 0}
+  m_LocalPosition: {x: 7.5, y: 2.5, z: 0}
   m_LocalScale: {x: 0.1, y: 20.1, z: 1}
   m_Children: []
   m_Father: {fileID: 836593205}
@@ -2011,7 +2031,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1288531867}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8, y: 2, z: 0}
+  m_LocalPosition: {x: -7.5, y: 2.5, z: 0}
   m_LocalScale: {x: 0.1, y: 20.1, z: 1}
   m_Children: []
   m_Father: {fileID: 836593205}
@@ -2369,7 +2389,7 @@ GameObject:
   - component: {fileID: 1482458822}
   m_Layer: 0
   m_Name: I-Block
-  m_TagString: Untagged
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2382,7 +2402,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1482458819}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.5, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1743968791}
@@ -2421,6 +2441,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db89b4ed6d0b7884fb863dbcfe4afaa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cubes:
+  - {fileID: 1743968790}
+  - {fileID: 1741086679}
+  - {fileID: 523058567}
+  - {fileID: 1851625758}
 --- !u!1 &1639278292
 GameObject:
   m_ObjectHideFlags: 0
@@ -2485,8 +2510,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1684097645}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -8, z: 0}
-  m_LocalScale: {x: 0.1, y: 16.1, z: 1}
+  m_LocalPosition: {x: 0, y: -7.5, z: 0}
+  m_LocalScale: {x: 0.1, y: 15.1, z: 1}
   m_Children: []
   m_Father: {fileID: 836593205}
   m_RootOrder: 2
@@ -3029,11 +3054,11 @@ GameObject:
   - component: {fileID: 1913219966}
   m_Layer: 0
   m_Name: Z-Block
-  m_TagString: Untagged
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1913219964
 Transform:
   m_ObjectHideFlags: 0
@@ -3081,6 +3106,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db89b4ed6d0b7884fb863dbcfe4afaa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cubes:
+  - {fileID: 273656070}
+  - {fileID: 2084612970}
+  - {fileID: 212501492}
+  - {fileID: 414209193}
 --- !u!1 &1945373094
 GameObject:
   m_ObjectHideFlags: 0
@@ -3183,6 +3213,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1984876604}
+  - component: {fileID: 1984876605}
   m_Layer: 0
   m_Name: TetrisSpawnPoint
   m_TagString: Untagged
@@ -3204,6 +3235,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1984876605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984876603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c24d57d08e5e8247a627f917bd1b818, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blocks:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &2008258186
 GameObject:
   m_ObjectHideFlags: 0
@@ -3310,11 +3361,11 @@ GameObject:
   - component: {fileID: 2070127412}
   m_Layer: 0
   m_Name: L-Block
-  m_TagString: Untagged
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2070127410
 Transform:
   m_ObjectHideFlags: 0
@@ -3362,6 +3413,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db89b4ed6d0b7884fb863dbcfe4afaa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cubes:
+  - {fileID: 2081206551}
+  - {fileID: 1441813258}
+  - {fileID: 1317307447}
+  - {fileID: 1945373094}
 --- !u!1 &2081206551
 GameObject:
   m_ObjectHideFlags: 0
