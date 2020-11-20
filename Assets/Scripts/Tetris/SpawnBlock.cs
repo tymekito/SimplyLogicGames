@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SpawnBlock : MonoBehaviour
 {
@@ -20,6 +18,10 @@ public class SpawnBlock : MonoBehaviour
 
     public void SpawnBlockInstance()
     {
-        Instantiate(blocks[Random.Range(0, blocks.Length)], transform.position, Quaternion.identity);
+        int randomBlock = Random.Range(0, blocks.Length);
+        if (randomBlock == 0 || randomBlock == 3)
+            Instantiate(blocks[randomBlock], (transform.position + new Vector3(0.5f, 0.5f, 0)), Quaternion.identity);
+        else
+            Instantiate(blocks[randomBlock], transform.position, Quaternion.identity);
     }
 }

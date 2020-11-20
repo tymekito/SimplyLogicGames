@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ColorChange : MonoBehaviour
 {
@@ -9,20 +7,22 @@ public class ColorChange : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+
+    }
+
+    public void randomColor()
+    {
+        Color color = Random.ColorHSV();
+        foreach (GameObject cube in cubes)
         {
-            Color color = Random.ColorHSV();
-            foreach (GameObject cube in cubes)
-            {
-                Renderer cubeRenderer = cube.GetComponent<Renderer>();
-                cubeRenderer.material.SetColor("_Color", color);
-            }
+            Renderer cubeRenderer = cube.GetComponent<Renderer>();
+            cubeRenderer.material.SetColor("_Color", color);
         }
     }
 }
