@@ -181,7 +181,7 @@ public class CheckersBoardController : MonoBehaviour
         {
             if (piece.x + 2 == field.x && piece.y + 2 == field.y)
             {
-               if (checkPiece(piece.x+1,piece.y+1))
+               if (checkPiece(piece.x+1,piece.y+1,piece.isWHite))
                {
                     piece.x+=2;
                     piece.y+=2;
@@ -191,7 +191,7 @@ public class CheckersBoardController : MonoBehaviour
             }
             if (piece.x - 2 == field.x && piece.y + 2 == field.y)
             {
-               if (checkPiece(piece.x - 1, piece.y + 1))
+               if (checkPiece(piece.x - 1, piece.y + 1, piece.isWHite))
                {
                     piece.x-=2;
                     piece.y+=2;
@@ -206,7 +206,7 @@ public class CheckersBoardController : MonoBehaviour
         {
             if (piece.x + 2 == field.x && piece.y - 2 == field.y)
             {
-                if (checkPiece(piece.x + 1, piece.y - 1))
+                if (checkPiece(piece.x + 1, piece.y - 1,piece.isWHite))
                 {
                     piece.x += 2;
                     piece.y -= 2;
@@ -216,7 +216,7 @@ public class CheckersBoardController : MonoBehaviour
             }
             if (piece.x - 2 == field.x && piece.y - 2 == field.y)
             {
-                if (checkPiece(piece.x - 1, piece.y - 1))
+                if (checkPiece(piece.x - 1, piece.y - 1,piece.isWHite))
                 {
                     piece.x -= 2;
                     piece.y -= 2;
@@ -228,12 +228,12 @@ public class CheckersBoardController : MonoBehaviour
                 return false;
         }
     }
-    private bool checkPiece(int dx , int dy)
+    private bool checkPiece(int dx , int dy, bool color)
     {
         foreach (Piece cell in pices)
         {
             if (cell != null)
-                if (cell.x == dx && cell.y == dy)
+                if (cell.x == dx && cell.y == dy && cell.isWHite !=color)
                 {
                     Destroy(cell.gameObject);
                     return true;
