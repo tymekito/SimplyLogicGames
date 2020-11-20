@@ -26,20 +26,15 @@ public class MoveBlock : MonoBehaviour
             transform.position += new Vector3(1.0f, 0, 0);
         }
 
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            transform.position += new Vector3(0, -1.0f, 0);
-        }
-
         if (Input.GetKeyDown(KeyCode.R))
         {
             lastAngle += 90.0f;
             transform.rotation = Quaternion.Euler(0, 0, lastAngle);
         }
 
-        if(Time.time - previousTime > fallTime)
+        if(Time.time - previousTime > (Input.GetKey(KeyCode.S) ? fallTime / 10 : fallTime))
         {
-            transform.position += new Vector3(0, -1, 0);
+            transform.position += new Vector3(0, -1.0f, 0);
             previousTime = Time.time;
         }
     }
