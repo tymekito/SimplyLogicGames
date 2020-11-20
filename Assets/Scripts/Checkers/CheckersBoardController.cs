@@ -22,7 +22,7 @@ public class CheckersBoardController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            
+
             RaycastHit hit;
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 25.0f, LayerMask.GetMask("Board")))
             {
@@ -36,7 +36,7 @@ public class CheckersBoardController : MonoBehaviour
             }
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 25.0f))
             {
-                if(hit.transform.gameObject.tag=="Piece")
+                if (hit.transform.gameObject.tag == "Piece")
                 {
                     holder = hit.transform.gameObject;
                 }
@@ -69,7 +69,7 @@ public class CheckersBoardController : MonoBehaviour
         SetBlackPice();
         SetWhitePice();
     }
-    private void GeneratePiece(int x, int y, GameObject objectToSpawn,bool isWHite)
+    private void GeneratePiece(int x, int y, GameObject objectToSpawn, bool isWHite)
     {
         GameObject go = Instantiate(objectToSpawn) as GameObject;
         go.transform.SetParent(transform);
@@ -102,9 +102,9 @@ public class CheckersBoardController : MonoBehaviour
             for (int x = 0; x < 8; x += 2)
             {
                 if (oddRow)
-                    GeneratePiece(x, y, blackPrefab,false);
+                    GeneratePiece(x, y, blackPrefab, false);
                 else
-                    GeneratePiece(x + 1, y, blackPrefab,false);
+                    GeneratePiece(x + 1, y, blackPrefab, false);
             }
         }
     }
@@ -116,15 +116,15 @@ public class CheckersBoardController : MonoBehaviour
             for (int x = 0; x < 8; x += 2)
             {
                 if (oddRow)
-                    GeneratePiece(x, y, whitePrefab,true);
+                    GeneratePiece(x, y, whitePrefab, true);
                 else
-                    GeneratePiece(x + 1, y, whitePrefab,true);
+                    GeneratePiece(x + 1, y, whitePrefab, true);
             }
         }
     }
     private void SetBoard()
     {
-        for (int y = 0; y < 8 ; y++)
+        for (int y = 0; y < 8; y++)
         {
             bool oddRow = y % 2 == 0;
             for (int x = 0; x < 8; x += 2)
@@ -159,7 +159,7 @@ public class CheckersBoardController : MonoBehaviour
         else
         {
 
-            if((piece.x - 1 == field.x && piece.y - 1 == field.y))
+            if ((piece.x - 1 == field.x && piece.y - 1 == field.y))
             {
                 piece.x--;
                 piece.y--;
@@ -181,59 +181,89 @@ public class CheckersBoardController : MonoBehaviour
         {
             if (piece.x + 2 == field.x && piece.y + 2 == field.y)
             {
-               if (checkPiece(piece.x+1,piece.y+1,piece.isWHite))
-               {
-                    piece.x+=2;
-                    piece.y+=2;
+                if (checkPiece(piece.x + 1, piece.y + 1, piece.isWHite))
+                {
+                    piece.x += 2;
+                    piece.y += 2;
                     return true;
                 }
-                return false;
             }
             if (piece.x - 2 == field.x && piece.y + 2 == field.y)
             {
-               if (checkPiece(piece.x - 1, piece.y + 1, piece.isWHite))
-               {
-                    piece.x-=2;
-                    piece.y+=2;
+                if (checkPiece(piece.x - 1, piece.y + 1, piece.isWHite))
+                {
+                    piece.x -= 2;
+                    piece.y += 2;
                     return true;
-               }
-               return false;
+                }
             }
-            else
-                return false;
-        }
-        else
-        {
             if (piece.x + 2 == field.x && piece.y - 2 == field.y)
             {
-                if (checkPiece(piece.x + 1, piece.y - 1,piece.isWHite))
+                if (checkPiece(piece.x + 1, piece.y - 1, piece.isWHite))
                 {
                     piece.x += 2;
                     piece.y -= 2;
                     return true;
                 }
-                return false;
             }
             if (piece.x - 2 == field.x && piece.y - 2 == field.y)
             {
-                if (checkPiece(piece.x - 1, piece.y - 1,piece.isWHite))
+                if (checkPiece(piece.x - 1, piece.y - 1, piece.isWHite))
                 {
                     piece.x -= 2;
                     piece.y -= 2;
                     return true;
                 }
-                return false;
             }
-            else
-                return false;
+            return false;
+        }
+        else
+        {
+            if (piece.x + 2 == field.x && piece.y - 2 == field.y)
+            {
+                if (checkPiece(piece.x + 1, piece.y - 1, piece.isWHite))
+                {
+                    piece.x += 2;
+                    piece.y -= 2;
+                    return true;
+                }
+            }
+            if (piece.x - 2 == field.x && piece.y - 2 == field.y)
+            {
+                if (checkPiece(piece.x - 1, piece.y - 1, piece.isWHite))
+                {
+                    piece.x -= 2;
+                    piece.y -= 2;
+                    return true;
+                }
+            }
+            if (piece.x + 2 == field.x && piece.y + 2 == field.y)
+            {
+                if (checkPiece(piece.x + 1, piece.y + 1, piece.isWHite))
+                {
+                    piece.x += 2;
+                    piece.y += 2;
+                    return true;
+                }
+            }
+            if (piece.x - 2 == field.x && piece.y + 2 == field.y)
+            {
+                if (checkPiece(piece.x - 1, piece.y + 1, piece.isWHite))
+                {
+                    piece.x -= 2;
+                    piece.y += 2;
+                    return true;
+                }
+            }
+            return false;
         }
     }
-    private bool checkPiece(int dx , int dy, bool color)
+    private bool checkPiece(int dx, int dy, bool color)
     {
         foreach (Piece cell in pices)
         {
             if (cell != null)
-                if (cell.x == dx && cell.y == dy && cell.isWHite !=color)
+                if (cell.x == dx && cell.y == dy && cell.isWHite != color)
                 {
                     Destroy(cell.gameObject);
                     return true;
