@@ -5,6 +5,8 @@ using UnityEngine;
 public class MoveBlock : MonoBehaviour
 {
     private float lastAngle = 0.0f;
+    private float previousTime = 0.0f;
+    private float fallTime = 0.8f;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +35,12 @@ public class MoveBlock : MonoBehaviour
         {
             lastAngle += 90.0f;
             transform.rotation = Quaternion.Euler(0, 0, lastAngle);
+        }
+
+        if(Time.time - previousTime > fallTime)
+        {
+            transform.position += new Vector3(0, -1, 0);
+            previousTime = Time.time;
         }
     }
 }
