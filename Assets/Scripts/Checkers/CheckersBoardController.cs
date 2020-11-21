@@ -6,19 +6,25 @@ using UnityEngine;
 public class CheckersBoardController : MonoBehaviour
 {
     private Vector3 boardofset = new Vector3(-4.0f, 0, -4.0f);
-    private Vector3 piceoffset = new Vector3(0.5f, 0, 0.5f);
-    public GameObject whitePrefab, blackPrefab;
+    private Vector3 piceoffset = new Vector3(0.5f, 0, 0.5f);    
     private Vector2 mouseOver;
+    public GameObject whitePrefab, blackPrefab, field;
     private GameObject holder;
-    public GameObject field;
+    [HideInInspector]
     public Piece[,] fields = new Piece[8, 8];
+    [HideInInspector]
     public Piece[,] pices = new Piece[8, 8];
-
+    private GameMenager gm;
     private void Start()
     {
         GenerateBoard();
+        gm = FindObjectOfType<GameMenager>();
     }
     private void Update()
+    {
+        MouseHandler();
+    }
+    private void MouseHandler()
     {
         if (Input.GetMouseButtonDown(0))
         {
@@ -29,43 +35,41 @@ public class CheckersBoardController : MonoBehaviour
                 mouseOver.x = (int)hit.point.x - boardofset.x;
                 mouseOver.y = (int)hit.point.z - boardofset.z;
             }
-            else
-            {
-                mouseOver.x = -1;
-                mouseOver.y = -1;
-            }
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 25.0f))
             {
-                if (hit.transform.gameObject.tag == "Piece")
+                GameObject hitted = hit.transform.gameObject;
+                if (hitted.tag == "Piece")
                 {
-                    holder = hit.transform.gameObject;
+                    if (gm.GetAccualPlayer() == GameMenager.Player.One && hitted.GetComponent<Piece>().isWHite == true)
+                        holder = hitted;
+                    else if (gm.GetAccualPlayer() == GameMenager.Player.Two && hitted.GetComponent<Piece>().isWHite == false)
+                    {
+                        holder = hitted;
+                    }
+                    else
+                        holder = null;
+                    // królowa
+                    
                 }
-            }
-        }
-        if (Input.GetMouseButtonUp(0))
-        {
-            RaycastHit hit;
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 25.0f))
-            {
-                if (hit.transform.gameObject.tag == "Field")
+                else if (holder !=null && hit.transform.gameObject.tag == "Field")
                 {
                     if (ValidMove(holder.transform.gameObject.GetComponent<Piece>(), hit.transform.gameObject.GetComponent<Piece>()))
                     {
-                        holder.transform.position = hit.transform.position;
+                            holder.transform.position = hit.transform.position;
+                            gm.ChangePlayer();
                     }
                     if (ValidAtack(holder.transform.gameObject.GetComponent<Piece>(), hit.transform.gameObject.GetComponent<Piece>()))
                     {
-                        holder.transform.position = hit.transform.position;
+                            holder.transform.position = hit.transform.position;
                     }
 
                 }
             }
         }
     }
-
     private void GenerateBoard()
     {
-        SetBoard();
+        SetFieldPiece();
         SetBlackPice();
         SetWhitePice();
     }
@@ -122,7 +126,7 @@ public class CheckersBoardController : MonoBehaviour
             }
         }
     }
-    private void SetBoard()
+    private void SetFieldPiece()
     {
         for (int y = 0; y < 8; y++)
         {
@@ -137,6 +141,12 @@ public class CheckersBoardController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Sprawdź czy możesz przesunąć się na pole 
+    /// </summary>
+    /// <param name="piece">pionek</param>
+    /// <param name="field">pole docelowe</param>
+    /// <returns></returns>
     private bool ValidMove(Piece piece, Piece field)
     {
         if (piece.isWHite)
@@ -181,7 +191,7 @@ public class CheckersBoardController : MonoBehaviour
         {
             if (piece.x + 2 == field.x && piece.y + 2 == field.y)
             {
-                if (checkPiece(piece.x + 1, piece.y + 1, piece.isWHite))
+                if (piece.checkPiece(piece.x + 1, piece.y + 1, piece.isWHite))
                 {
                     piece.x += 2;
                     piece.y += 2;
@@ -190,7 +200,7 @@ public class CheckersBoardController : MonoBehaviour
             }
             if (piece.x - 2 == field.x && piece.y + 2 == field.y)
             {
-                if (checkPiece(piece.x - 1, piece.y + 1, piece.isWHite))
+                if (piece.checkPiece(piece.x - 1, piece.y + 1, piece.isWHite))
                 {
                     piece.x -= 2;
                     piece.y += 2;
@@ -199,7 +209,7 @@ public class CheckersBoardController : MonoBehaviour
             }
             if (piece.x + 2 == field.x && piece.y - 2 == field.y)
             {
-                if (checkPiece(piece.x + 1, piece.y - 1, piece.isWHite))
+                if (piece.checkPiece(piece.x + 1, piece.y - 1, piece.isWHite))
                 {
                     piece.x += 2;
                     piece.y -= 2;
@@ -208,7 +218,7 @@ public class CheckersBoardController : MonoBehaviour
             }
             if (piece.x - 2 == field.x && piece.y - 2 == field.y)
             {
-                if (checkPiece(piece.x - 1, piece.y - 1, piece.isWHite))
+                if (piece.checkPiece(piece.x - 1, piece.y - 1, piece.isWHite))
                 {
                     piece.x -= 2;
                     piece.y -= 2;
@@ -221,7 +231,7 @@ public class CheckersBoardController : MonoBehaviour
         {
             if (piece.x + 2 == field.x && piece.y - 2 == field.y)
             {
-                if (checkPiece(piece.x + 1, piece.y - 1, piece.isWHite))
+                if (piece.checkPiece(piece.x + 1, piece.y - 1, piece.isWHite))
                 {
                     piece.x += 2;
                     piece.y -= 2;
@@ -230,7 +240,7 @@ public class CheckersBoardController : MonoBehaviour
             }
             if (piece.x - 2 == field.x && piece.y - 2 == field.y)
             {
-                if (checkPiece(piece.x - 1, piece.y - 1, piece.isWHite))
+                if (piece.checkPiece(piece.x - 1, piece.y - 1, piece.isWHite))
                 {
                     piece.x -= 2;
                     piece.y -= 2;
@@ -239,7 +249,7 @@ public class CheckersBoardController : MonoBehaviour
             }
             if (piece.x + 2 == field.x && piece.y + 2 == field.y)
             {
-                if (checkPiece(piece.x + 1, piece.y + 1, piece.isWHite))
+                if (piece.checkPiece(piece.x + 1, piece.y + 1, piece.isWHite))
                 {
                     piece.x += 2;
                     piece.y += 2;
@@ -248,7 +258,7 @@ public class CheckersBoardController : MonoBehaviour
             }
             if (piece.x - 2 == field.x && piece.y + 2 == field.y)
             {
-                if (checkPiece(piece.x - 1, piece.y + 1, piece.isWHite))
+                if (piece.checkPiece(piece.x - 1, piece.y + 1, piece.isWHite))
                 {
                     piece.x -= 2;
                     piece.y += 2;
@@ -258,17 +268,12 @@ public class CheckersBoardController : MonoBehaviour
             return false;
         }
     }
-    private bool checkPiece(int dx, int dy, bool color)
-    {
-        foreach (Piece cell in pices)
-        {
-            if (cell != null)
-                if (cell.x == dx && cell.y == dy && cell.isWHite != color)
-                {
-                    Destroy(cell.gameObject);
-                    return true;
-                }
-        }
-        return false;
-    }
+    /// <summary>
+    /// Znajdz komórkę o współrzędnych x i y o innym kolorze niż pionek który próbujesz zbić
+    /// </summary>
+    /// <param name="dx">X zbitego pionka</param>
+    /// <param name="dy">Y zbitego pionka</param>
+    /// <param name="color">color zbitego pionka</param>
+    /// <returns>wynik czy zbito pionka</returns>
+    
 }
