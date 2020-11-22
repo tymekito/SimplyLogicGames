@@ -19,9 +19,7 @@ public class SpawnBlock : MonoBehaviour
     public void SpawnBlockInstance()
     {
         int randomBlock = Random.Range(0, blocks.Length);
-        if (randomBlock == 0 || randomBlock == 3)
-            Instantiate(blocks[randomBlock], (transform.position + new Vector3(0.5f, 0.5f, 0)), Quaternion.identity);
-        else
-            Instantiate(blocks[randomBlock], transform.position, Quaternion.identity);
+
+        Instantiate(blocks[randomBlock], transform.position, Quaternion.identity);
     }
 }
