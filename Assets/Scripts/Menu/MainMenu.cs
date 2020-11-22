@@ -11,8 +11,11 @@ public class MainMenu : MonoBehaviour
     public void PlaySelected()
     {
         gameName = GameSelection.gameName;
-        Debug.Log(gameName);
-        SceneManager.LoadScene("SampleScene");
+        Debug.Log(gameName.ToString());
+        if(gameName == "Tetris (UnityEngine.GameObject)")
+            SceneManager.LoadScene("Tetris");
+        else
+            SceneManager.LoadScene("SampleScene");
     }
 
     public void Quit()
