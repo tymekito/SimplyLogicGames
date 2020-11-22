@@ -2,6 +2,8 @@
 
 public class MoveBlock : MonoBehaviour
 {
+    private int points = 0;
+
     [SerializeField]
     private Vector3 blockRotationPoint;
     private float previousFallTime;
@@ -11,6 +13,8 @@ public class MoveBlock : MonoBehaviour
     private static Transform[,] backgroundGrid = new Transform[boardWidth, boardHeight];
 
     private ColorChange colorChange;
+
+    public int GetPoints() { return points; }
 
     private void Start()
     {
@@ -82,6 +86,10 @@ public class MoveBlock : MonoBehaviour
             {
                 DeleteLine(i);
                 MoveLineDown(i);
+
+                points += boardWidth;
+
+                FindObjectOfType<SpawnBlock>().SetPoints(points);
             }
         }
     }
