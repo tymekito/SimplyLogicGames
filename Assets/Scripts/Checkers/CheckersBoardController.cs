@@ -268,12 +268,5 @@ public class CheckersBoardController : MonoBehaviour
             return false;
         }
     }
-    /// <summary>
-    /// Znajdz komórkę o współrzędnych x i y o innym kolorze niż pionek który próbujesz zbić
-    /// </summary>
-    /// <param name="dx">X zbitego pionka</param>
-    /// <param name="dy">Y zbitego pionka</param>
-    /// <param name="color">color zbitego pionka</param>
-    /// <returns>wynik czy zbito pionka</returns>
     
 }

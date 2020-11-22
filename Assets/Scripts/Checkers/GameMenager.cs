@@ -36,8 +36,11 @@ public class GameMenager : MonoBehaviour
     }
     public void EndGame()
     {
+        CheckersBoardController boar = FindObjectOfType<CheckersBoardController>();
+        // check number of one color piece equals 0  then EndGame();
+        //if (boar.)
         turnText.text = "Koniec Gry";
-        Destroy(FindObjectOfType<CheckersBoardController>(),3.0f);
+        Destroy(boar, 3.0f);
     }
 
 }
