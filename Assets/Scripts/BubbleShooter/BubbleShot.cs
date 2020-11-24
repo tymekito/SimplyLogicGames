@@ -4,43 +4,26 @@ using UnityEngine;
 
 public class BubbleShot : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject particle;
+    private float distance = 100f;
+
     [SerializeField]
     private Camera camera;
-    private Vector3 destination;
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if(Input.GetButtonDown("Fire1"))
         {
-            Debug.Log("Shot");
-
-            ShootProjectile();
+            Shoot();
         }
     }
 
-    void ShootProjectile()
+    private void Shoot()
     {
-        Ray ray = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit))
-            destination = hit.point;
-
-        else
-            destination = ray.GetPoint(1000);
-
-        InstatiateLateProjectile();
-    }
-
-    void InstatiateLateProjectile()
-    {
+        RaycastHit raycastHit;
+        if(Physics.Raycast(camera.transform.position, camera.transform.forward, out raycastHit, distance))
+        {
+            Debug.Log(raycastHit.transform.name);
+        }
 
     }
 }
