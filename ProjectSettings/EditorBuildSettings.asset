@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tetris.unity
     guid: 46130b2a855a49745947a7940bd86318
+  - enabled: 1
+    path: Assets/Scenes/BubbleShooter.unity
+    guid: ea788fad3134fe240b304fe1093e9ecd
   m_configObjects: {}

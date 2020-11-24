@@ -14,6 +14,8 @@ public class MainMenu : MonoBehaviour
         Debug.Log(gameName.ToString());
         if(gameName == "Tetris (UnityEngine.GameObject)")
             SceneManager.LoadScene("Tetris");
+        else if(gameName == "BubbleShooter (UnityEngine.GameObject)")
+            SceneManager.LoadScene("BubbleShooter");
         else
             SceneManager.LoadScene("SampleScene");
     }
