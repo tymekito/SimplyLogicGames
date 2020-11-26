@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MouseMovement : MonoBehaviour
 {
-    private float mouseSensivity = 300.0f;
+    private float mouseSensivity = 400.0f;
     private float xRotation = 0.0f;
     private float yRotation = 0.0f;
    
@@ -24,6 +24,6 @@ public class MouseMovement : MonoBehaviour
         xRotation = Mathf.Clamp(xRotation, -30f, 30f);
         yRotation -= mouseX;
 
-        transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f);
+        transform.localRotation = Quaternion.Euler(-xRotation, yRotation, 0f);
     }
 }
