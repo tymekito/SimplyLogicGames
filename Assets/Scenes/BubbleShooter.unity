@@ -772,10 +772,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af3484803b86fbf4998c86bf83800077, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color:
-  - {r: 1, g: 0.95137095, b: 0, a: 0}
-  - {r: 1, g: 0, b: 0, a: 0}
-  - {r: 0, g: 1, b: 0.18643212, a: 0}
+  materials:
+  - {fileID: 2100000, guid: 138c79790500bfc4f989298fa4845d5b, type: 2}
+  - {fileID: 2100000, guid: f2cb593317406694598f69f56bc63511, type: 2}
+  - {fileID: 2100000, guid: ed57ecffa5ae68b4d98334a0cc772266, type: 2}
 --- !u!4 &658623204
 Transform:
   m_ObjectHideFlags: 0
@@ -993,6 +993,10 @@ MonoBehaviour:
   - {r: 1, g: 0.95294124, b: 0, a: 0}
   - {r: 1, g: 0, b: 0, a: 0}
   - {r: 0, g: 1, b: 0.18823531, a: 0}
+  materials:
+  - {fileID: 2100000, guid: 138c79790500bfc4f989298fa4845d5b, type: 2}
+  - {fileID: 2100000, guid: f2cb593317406694598f69f56bc63511, type: 2}
+  - {fileID: 2100000, guid: ed57ecffa5ae68b4d98334a0cc772266, type: 2}
   bubble: {fileID: 2985525458755102822, guid: e0f201189075aba4380f8019126422a6, type: 3}
   sphere: {fileID: 277655122}
 --- !u!1001 &2985525459791989257
