@@ -12,35 +12,66 @@ public class GameMenager : MonoBehaviour
         Two
     }
     private Player accualPlayer;
+    [HideInInspector]
     public Text turnText;
+    [SerializeField]
+    private CheckersBoardController boardPrefab;
+    private CheckersBoardController board;
     private void Start()
     {
-        accualPlayer = Player.One;
-        DisplayTurn();
+        this.SetupGame();
     }
     public Player GetAccualPlayer()
     {
         return accualPlayer;
     }
+    /// <summary>
+    /// Switch enum value
+    /// </summary>
     public void ChangePlayer()
     {
-        if (accualPlayer.Equals(Player.One))
-            accualPlayer = Player.Two;
-        else
-            accualPlayer = Player.One;
-        DisplayTurn();
+        if (!EndGame())
+        {
+            if (accualPlayer.Equals(Player.One))
+                accualPlayer = Player.Two;
+            else
+                accualPlayer = Player.One;
+            DisplayTurn();
+        }
+
     }
+    /// <summary>
+    /// Display text in UI
+    /// </summary>
     public void DisplayTurn()
     {
         turnText.text = "Tura Gracza: " + accualPlayer.ToString();
     }
-    public void EndGame()
+    /// <summary>
+    /// Destroy board if one of pieces not exits
+    /// </summary>
+    /// <returns>true if no pieces one of colors false if pieces exits on board</returns>
+    public bool EndGame()
     {
-        CheckersBoardController boar = FindObjectOfType<CheckersBoardController>();
-        // check number of one color piece equals 0  then EndGame();
-        //if (boar.)
-        turnText.text = "Koniec Gry";
-        Destroy(boar, 3.0f);
+        if (board.numberOfBlackPieces == 0 || board.numberOfWhitePieces == 0)
+        {
+            turnText.text = "Wygrał gracz:" + accualPlayer.ToString();
+            Destroy(board.gameObject, 3.0f);
+            return true;
+        }
+        else
+            return false;
+    }
+    public void SetupGame()
+    {
+        board = Instantiate(boardPrefab, gameObject.transform.position, Quaternion.identity);
+        accualPlayer = Player.One;
+        DisplayTurn();
+    }
+    public void NewGame()
+    {
+        Destroy(board.gameObject);
+        SetupGame();
     }
 
 }

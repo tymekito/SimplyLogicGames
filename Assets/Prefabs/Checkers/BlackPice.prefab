@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5024575602449564123}
   - component: {fileID: 7074828518962332814}
   - component: {fileID: -9134185252812802287}
+  - component: {fileID: 3896954302758996980}
   m_Layer: 0
   m_Name: BlackPice
   m_TagString: Piece
@@ -48,6 +49,7 @@ MonoBehaviour:
   x: 0
   y: 0
   isWHite: 0
+  isQueen: 0
 --- !u!65 &-9134185252812802287
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -61,6 +63,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3896954302758996980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4737103666822217981}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dc07d2e7776ddc459d500b3bba00875, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  x: 0
+  y: 0
+  isWHite: 0
+  isQueen: 0
 --- !u!1 &6077009746286517924
 GameObject:
   m_ObjectHideFlags: 0

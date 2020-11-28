@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5199562354387751625}
   - component: {fileID: 181155098769145960}
   - component: {fileID: 1001568519160949713}
+  - component: {fileID: 98640261143265439}
   m_Layer: 0
   m_Name: WhitePice
   m_TagString: Piece
@@ -45,6 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ffe8e299751f664e966111b21b94656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  x: 0
+  y: 0
+  isWHite: 0
+  isQueen: 0
 --- !u!65 &1001568519160949713
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -58,6 +63,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &98640261143265439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302448161729164196}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dc07d2e7776ddc459d500b3bba00875, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  x: 0
+  y: 0
+  isWHite: 0
+  isQueen: 0
 --- !u!1 &7020921130476773079
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,10 +15,14 @@ public class CheckersBoardController : MonoBehaviour
     [HideInInspector]
     public Piece[,] pices = new Piece[8, 8];
     private GameMenager gm;
+    [HideInInspector]
+    public int numberOfWhitePieces, numberOfBlackPieces;
     private void Start()
     {
-        GenerateBoard();
         gm = FindObjectOfType<GameMenager>();
+        numberOfWhitePieces = 0;
+        numberOfBlackPieces = 0;
+        GenerateBoard();
     }
     private void Update()
     {
@@ -48,8 +52,6 @@ public class CheckersBoardController : MonoBehaviour
                     }
                     else
                         holder = null;
-                    // królowa
-                    
                 }
                 else if (holder !=null && hit.transform.gameObject.tag == "Field")
                 {
@@ -62,7 +64,7 @@ public class CheckersBoardController : MonoBehaviour
                     {
                             holder.transform.position = hit.transform.position;
                     }
-
+                    holder.transform.gameObject.GetComponent<Piece>().createQueen();
                 }
             }
         }
@@ -105,6 +107,7 @@ public class CheckersBoardController : MonoBehaviour
             bool oddRow = y % 2 == 0;
             for (int x = 0; x < 8; x += 2)
             {
+                numberOfBlackPieces++;
                 if (oddRow)
                     GeneratePiece(x, y, blackPrefab, false);
                 else
@@ -119,6 +122,7 @@ public class CheckersBoardController : MonoBehaviour
             bool oddRow = y % 2 == 0;
             for (int x = 0; x < 8; x += 2)
             {
+                numberOfWhitePieces++;
                 if (oddRow)
                     GeneratePiece(x, y, whitePrefab, true);
                 else
@@ -149,124 +153,11 @@ public class CheckersBoardController : MonoBehaviour
     /// <returns></returns>
     private bool ValidMove(Piece piece, Piece field)
     {
-        if (piece.isWHite)
-        {
-            if (piece.x + 1 == field.x && piece.y + 1 == field.y)
-            {
-                piece.x++;
-                piece.y++;
-                return true;
-            }
-            if (piece.x - 1 == field.x && piece.y + 1 == field.y)
-            {
-                piece.x--;
-                piece.y++;
-                return true;
-            }
-            else
-                return false;
-        }
-        else
-        {
-
-            if ((piece.x - 1 == field.x && piece.y - 1 == field.y))
-            {
-                piece.x--;
-                piece.y--;
-                return true;
-            }
-            if ((piece.x + 1 == field.x && piece.y - 1 == field.y))
-            {
-                piece.x++;
-                piece.y--;
-                return true;
-            }
-            else
-                return false;
-        }
+        return piece.GetComponent<Queen>().enabled ? piece.GetComponent<Queen>().MovePiece(field): piece.MovePiece(field);
     }
     private bool ValidAtack(Piece piece, Piece field)
     {
-        if (piece.isWHite)
-        {
-            if (piece.x + 2 == field.x && piece.y + 2 == field.y)
-            {
-                if (piece.checkPiece(piece.x + 1, piece.y + 1, piece.isWHite))
-                {
-                    piece.x += 2;
-                    piece.y += 2;
-                    return true;
-                }
-            }
-            if (piece.x - 2 == field.x && piece.y + 2 == field.y)
-            {
-                if (piece.checkPiece(piece.x - 1, piece.y + 1, piece.isWHite))
-                {
-                    piece.x -= 2;
-                    piece.y += 2;
-                    return true;
-                }
-            }
-            if (piece.x + 2 == field.x && piece.y - 2 == field.y)
-            {
-                if (piece.checkPiece(piece.x + 1, piece.y - 1, piece.isWHite))
-                {
-                    piece.x += 2;
-                    piece.y -= 2;
-                    return true;
-                }
-            }
-            if (piece.x - 2 == field.x && piece.y - 2 == field.y)
-            {
-                if (piece.checkPiece(piece.x - 1, piece.y - 1, piece.isWHite))
-                {
-                    piece.x -= 2;
-                    piece.y -= 2;
-                    return true;
-                }
-            }
-            return false;
-        }
-        else
-        {
-            if (piece.x + 2 == field.x && piece.y - 2 == field.y)
-            {
-                if (piece.checkPiece(piece.x + 1, piece.y - 1, piece.isWHite))
-                {
-                    piece.x += 2;
-                    piece.y -= 2;
-                    return true;
-                }
-            }
-            if (piece.x - 2 == field.x && piece.y - 2 == field.y)
-            {
-                if (piece.checkPiece(piece.x - 1, piece.y - 1, piece.isWHite))
-                {
-                    piece.x -= 2;
-                    piece.y -= 2;
-                    return true;
-                }
-            }
-            if (piece.x + 2 == field.x && piece.y + 2 == field.y)
-            {
-                if (piece.checkPiece(piece.x + 1, piece.y + 1, piece.isWHite))
-                {
-                    piece.x += 2;
-                    piece.y += 2;
-                    return true;
-                }
-            }
-            if (piece.x - 2 == field.x && piece.y + 2 == field.y)
-            {
-                if (piece.checkPiece(piece.x - 1, piece.y + 1, piece.isWHite))
-                {
-                    piece.x -= 2;
-                    piece.y += 2;
-                    return true;
-                }
-            }
-            return false;
-        }
+        return piece.GetComponent<Queen>().enabled ? piece.GetComponent<Queen>().AtackPiece(field) : piece.AtackPiece(field);
     }
     
 }
