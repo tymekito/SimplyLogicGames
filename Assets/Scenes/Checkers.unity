@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnText: {fileID: 1067915961}
-  boardPrefab: {fileID: 0}
+  boardPrefab: {fileID: 1930091334, guid: a5e9842d7ee9c7f40a7ac9d588f77ef2, type: 3}
 --- !u!1 &357241152
 GameObject:
   m_ObjectHideFlags: 0
