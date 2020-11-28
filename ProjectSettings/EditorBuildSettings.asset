@@ -8,10 +8,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 9dd4ed595bfa7ec40a461a0de49ff386
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/Scenes/Tetris.unity
     guid: 46130b2a855a49745947a7940bd86318
+  - enabled: 1
+    path: Assets/Scenes/Checkers.unity
+    guid: b8e1f5c6b40744d42bd134c82dd925dd
+  - enabled: 1
+    path: Assets/Scenes/BubbleShooter.unity
+    guid: 1053afc2ae2161e4ca9e95c1a97370ee
   m_configObjects: {}
