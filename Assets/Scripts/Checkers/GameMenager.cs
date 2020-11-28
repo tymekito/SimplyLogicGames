@@ -1,8 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Menagment game, create board and handle UI
+/// </summary>
 public class GameMenager : MonoBehaviour
 {
     [HideInInspector]
@@ -62,12 +63,18 @@ public class GameMenager : MonoBehaviour
         else
             return false;
     }
+    /// <summary>
+    /// Create board set player and dispaly in Ui
+    /// </summary>
     public void SetupGame()
     {
         board = Instantiate(boardPrefab, gameObject.transform.position, Quaternion.identity);
         accualPlayer = Player.One;
         DisplayTurn();
     }
+    /// <summary>
+    /// Destroy board and setup new game
+    /// </summary>
     public void NewGame()
     {
         Destroy(board.gameObject);

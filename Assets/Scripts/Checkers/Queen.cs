@@ -1,10 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
+/// <summary>
+/// Queen Piece Instance
+/// </summary>
 public class Queen : Piece
-{
+{    
+    /// <summary>
+    /// Table of all pieces
+    /// </summary>
     CheckersBoardController board;
     private void Start()
     {
@@ -17,6 +20,14 @@ public class Queen : Piece
         board = FindObjectOfType<CheckersBoardController>();
         //arent.enabled = false;
     }
+    /// <summary>
+    /// Check if piece is hited by another piece, and destroy hitted piece, 
+    /// the capture is checked against the piece table
+    /// </summary>
+    /// <param name="dx">hitting piece x</param>
+    /// <param name="dy">hitting piece y</param>
+    /// <param name="color">hitting piece color</param>
+    /// <returns>true if hitted false if not hitted </returns>
     public override bool checkPiece(int dx, int dy, bool color)
     {
         foreach (Piece cell in board.pices)

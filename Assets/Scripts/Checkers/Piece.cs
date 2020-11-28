@@ -1,38 +1,48 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+/// <summary>
+/// Piece Instance
+/// </summary>
 public class Piece : MonoBehaviour
 {
+    /// <summary>
+    /// X and Y co-ordinates
+    /// </summary>
     [HideInInspector]
     public int x, y;
+    /// <summary>
+    /// Color
+    /// </summary>
     [HideInInspector]
     public bool isWHite;
+    /// <summary>
+    /// Queen flag
+    /// </summary>
     [HideInInspector]
     public bool isQueen;
+    /// <summary>
+    /// Table of all pieces
+    /// </summary>
     CheckersBoardController board;
-    private void Awake()
-    {
-        // gameObject.GetComponent<Queen>().enabled = false;
-    }
     private void Start()
     {
         board = FindObjectOfType<CheckersBoardController>();
         isQueen = false;
     }
     /// <summary>
-    /// Znajdz komórkę o współrzędnych x i y o innym kolorze niż pionek który próbujesz zbić
+    /// Check if piece is hited by another piece, and destroy hitted piece, 
+    /// the capture is checked against the piece table
     /// </summary>
-    /// <param name="dx">X zbitego pionka</param>
-    /// <param name="dy">Y zbitego pionka</param>
-    /// <param name="color">color zbitego pionka</param>
-    /// <returns>wynik czy zbito pionka</returns>
+    /// <param name="dx">hitting piece x</param>
+    /// <param name="dy">hitting piece y</param>
+    /// <param name="color">hitting piece color</param>
+    /// <returns>true if hitted false if not hitted </returns>
     public virtual bool checkPiece(int dx, int dy, bool color)
     {
         foreach (Piece cell in board.pices)
         {
             if (cell != null)
-                if (cell.x == dx && cell.y == dy && cell.isWHite != color)// colors are diffrent
+                if (cell.x == dx && cell.y == dy && cell.isWHite != color)
                 {
                     Destroy(cell.gameObject);
                     return true;
@@ -78,13 +88,18 @@ public class Piece : MonoBehaviour
                 return false;
         }
     }
-
+    /// <summary>
+    /// Checking if the piece can capture another piec 
+    /// </summary>
+    /// <param name="field"> Instance of another piece</param>
+    /// <returns>true if capture false if not capture</returns>
     public virtual bool AtackPiece(Piece field)
     {
         int rangeOfMove = 2;
-        int atacked = 1;
+        int atacked = rangeOfMove-1;
         if (isWHite)
         {
+            //Capture conditions
             if (x + rangeOfMove == field.x && y + rangeOfMove == field.y)
             {
                 if (checkPiece(x + atacked, y + atacked, isWHite))
@@ -172,6 +187,9 @@ public class Piece : MonoBehaviour
             return false;
         }
     }
+    /// <summary>
+    /// Eneble Queen script
+    /// </summary>
     public void createQueen()
     {
         if ((isWHite && y == 7) || (!isWHite && y == 0))
