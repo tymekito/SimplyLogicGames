@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+/// <summary>
+/// The score class for checking the game score in MoveBlock Class and updating it on the UI.
+/// </summary>
 
 public class Score : MonoBehaviour
 {
@@ -9,14 +12,19 @@ public class Score : MonoBehaviour
     private SpawnBlock spawnBlock;
     private int score = 0;
     private TextMeshPro text;
-    // Start is called before the first frame update
+
+    /// <summary>
+    /// Gets the TextMeshPro GameObject component at the start and sets score value to 0.
+    /// </summary>
     void Start()
     {
         text = GetComponent<TextMeshPro>();
         text.text = score.ToString();
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Updates the score.
+    /// </summary>
     void Update()
     {
         score = spawnBlock.GetPoints();

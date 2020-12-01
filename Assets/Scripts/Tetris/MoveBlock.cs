@@ -1,5 +1,10 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// The class for block move, and remembering blocks position.
+/// Also for removing full lines.
+/// </summary>
+
 public class MoveBlock : MonoBehaviour
 {
     private int points = 0;
@@ -14,14 +19,24 @@ public class MoveBlock : MonoBehaviour
 
     private ColorChange colorChange;
 
+    /// <summary>
+    /// Gets the points. Primarly for function in Score Class
+    /// </summary>
+    /// <returns>An int points.</returns>
     public int GetPoints() { return points; }
 
+    /// <summary>
+    /// Chooses randam color at the creation of the block.
+    /// </summary>
     private void Start()
     {
         colorChange = GetComponent<ColorChange>();
-        colorChange.randomColor();
+        colorChange.RandomColor();
     }
 
+    /// <summary>
+    /// Updates the block moves and calls different methods if needed.
+    /// </summary>
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.A))
@@ -67,6 +82,9 @@ public class MoveBlock : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Adds the block to the grid in correct positions according to cubes position.
+    /// </summary>
     void AddBlockToGrid()
     {
         foreach (Transform cube in transform)
@@ -78,6 +96,9 @@ public class MoveBlock : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Checks the grid for lines.
+    /// </summary>
     void CheckGridForLines()
     {
         for(int i = boardHeight-1; i >= 0; i--)
@@ -94,6 +115,11 @@ public class MoveBlock : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Returns whether the line is grid is full or not
+    /// </summary>
+    /// <param name="i">The number of line</param>
+    /// <returns>A wheather the line is full or not.</returns>
     bool IsLine(int i)
     {
         for(int j = 0; j < boardWidth; j++)
@@ -105,6 +131,10 @@ public class MoveBlock : MonoBehaviour
         return true;
     }
 
+    /// <summary>
+    /// Deletes the line.
+    /// </summary>
+    /// <param name="i">The line number.</param>
     void DeleteLine(int i)
     {
         for (int j = 0; j < boardWidth; j++)
@@ -114,6 +144,10 @@ public class MoveBlock : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Moves the line down.
+    /// </summary>
+    /// <param name="i">The line number.</param>
     void MoveLineDown(int i)
     {
         for(int tmpI = i; tmpI < boardHeight; tmpI++)
@@ -130,6 +164,11 @@ public class MoveBlock : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Checks if block move is possible.
+    /// Which means whether it collides with wall or other block
+    /// </summary>
+    /// <returns>An information about whether move is possible or not.</returns>
     bool IsMovePossible()
     {
         foreach(Transform cube in transform)
