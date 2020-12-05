@@ -17,6 +17,7 @@ public class BubbleShot : MonoBehaviour
     [SerializeField]
     private GameObject sphere;
     private Renderer sphereRenderer;
+    Vector3 lineOrigin;
 
     private void Start()
     {
@@ -26,7 +27,10 @@ public class BubbleShot : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetButtonDown("Fire1"))
+        lineOrigin = camera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f));
+        Debug.DrawRay(lineOrigin, camera.transform.forward * distance, Color.green);
+
+        if (Input.GetButtonDown("Fire1"))
         {
             sphereRenderer.enabled = false;
             Shoot();
@@ -37,6 +41,8 @@ public class BubbleShot : MonoBehaviour
 
     private void Shoot()
     {
+        lineOrigin = camera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f));
+        lineOrigin.y -= 0.6f;
         Ray ray = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
 
@@ -46,16 +52,13 @@ public class BubbleShot : MonoBehaviour
         else
             targetPoint = ray.GetPoint(20f);
 
-        GameObject bullet = Instantiate(bubble, transform.position, Quaternion.identity);
-
-        bullet.transform.parent = gameObject.transform;
+        GameObject bullet = Instantiate(bubble, lineOrigin, Quaternion.identity);
 
 
-        Vector3 direction = targetPoint - transform.position;
+        Vector3 direction = targetPoint - bullet.transform.position;
 
-        bullet.transform.forward = direction.normalized;
-
-        bullet.GetComponent<Rigidbody>().AddForce(direction.normalized * 10, ForceMode.VelocityChange);
+        Debug.Log(direction.normalized);
+        bullet.GetComponent<Rigidbody>().velocity = direction.normalized * 20f;
     }
 
     private void NewBubble()
