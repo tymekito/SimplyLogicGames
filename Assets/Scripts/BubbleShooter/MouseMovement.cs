@@ -2,19 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// The mouse movement class.
+/// </summary>
 public class MouseMovement : MonoBehaviour
 {
     private float mouseSensivity = 400.0f;
     private float xRotation = 0.0f;
     private float yRotation = 0.0f;
-   
-    // Start is called before the first frame update
+
+    /// <summary>
+    /// Locks the cursor at the start
+    /// </summary>
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Updates the mouse position
+    /// </summary>
     void Update()
     {
         float mouseX = Input.GetAxis("Mouse X") * mouseSensivity * Time.deltaTime;

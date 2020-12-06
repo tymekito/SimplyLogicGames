@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// The class for shooting bubbles and creating new ammunition.
+/// </summary>
+
 public class BubbleShot : MonoBehaviour
 {
     private float distance = 100f;
@@ -19,12 +23,18 @@ public class BubbleShot : MonoBehaviour
     private Renderer sphereRenderer;
     Vector3 lineOrigin;
 
+    /// <summary>
+    /// Creates first bubble at the start.
+    /// </summary>
     private void Start()
     {
         sphereRenderer = sphere.GetComponent<Renderer>();
         NewBubble();
     }
 
+    /// <summary>
+    /// Updates the ray of where the player is pointing at and calls method if the fire button is pressed.
+    /// </summary>
     private void Update()
     {
         lineOrigin = camera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f));
@@ -39,6 +49,9 @@ public class BubbleShot : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Method called when player is shooting. Shoots the bubble into correct direction.
+    /// </summary>
     private void Shoot()
     {
         lineOrigin = camera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f));
@@ -60,6 +73,9 @@ public class BubbleShot : MonoBehaviour
         bullet.GetComponent<Rigidbody>().velocity = direction.normalized * 25f;
     }
 
+    /// <summary>
+    /// Creates new ammuntion bubble.
+    /// </summary>
     private void NewBubble()
     {
         int index = Random.Range(0, materials.Length);
