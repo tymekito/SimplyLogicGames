@@ -57,8 +57,7 @@ public class BubbleShot : MonoBehaviour
 
         Vector3 direction = targetPoint - bullet.transform.position;
 
-        Debug.Log(direction.normalized);
-        bullet.GetComponent<Rigidbody>().velocity = direction.normalized * 20f;
+        bullet.GetComponent<Rigidbody>().velocity = direction.normalized * 25f;
     }
 
     private void NewBubble()

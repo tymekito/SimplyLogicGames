@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BubblesWall : MonoBehaviour
 {
-    private static int boardWidth = 3, boardHeight = 3, boardDepth = 3;
-    private static Transform[,,] bubbleBoard = new Transform[boardWidth, boardHeight, boardDepth];
+    private static int boardWidth = 5, boardHeight = 2, boardDepth = 3;
+    private GameObject[,,] bubbles = new GameObject[boardWidth, boardHeight, boardDepth];
 
     private Bubble bubble;
     [SerializeField]
@@ -25,19 +25,70 @@ public class BubblesWall : MonoBehaviour
                     int index = Random.Range(0, materials.Length);
 
                     GameObject bbl = bubble.SpawnBubble(materials[index], pos);
-                    bbl.transform.parent = gameObject.transform;
-                    bubbleBoard[i, j, k] = pos;
+                    bubbles[i, j, k] = bbl;
                 }
             }
         }
     }
 
-    void Update()
+    public void DestroyNeighbours(Transform bubblePosition, Color color)
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        int x = (int)bubblePosition.position.x;
+        int y = (int)bubblePosition.position.y;
+        int z = (int)bubblePosition.position.z;
+
+        if (x > 0 && bubbles[x - 1, y, z] != null)
         {
-            Destroy(bubbleBoard[1, 0, 0].gameObject);
-            bubbleBoard[1, 0, 0] = null;
+            if (color == bubbles[x - 1, y, z].gameObject.GetComponentInChildren<Renderer>().material.color)
+            {
+                Destroy(bubbles[x - 1, y, z]);
+                bubbles[x - 1, y, z] = null;
+            }
         }
+        if (x < boardWidth - 2 && bubbles[x + 1, y, z] != null)
+        {
+            if (color == bubbles[x + 1, y, z].gameObject.GetComponentInChildren<Renderer>().material.color)
+            {
+                Destroy(bubbles[x + 1, y, z]);
+                bubbles[x + 1, y, z] = null;
+            }
+        }
+
+        if (y > 0 && bubbles[x, y - 1, z] != null)
+        {
+            if (color == bubbles[x, y - 1, z].gameObject.GetComponentInChildren<Renderer>().material.color)
+            {
+                Destroy(bubbles[x, y - 1, z]);
+                bubbles[x, y - 1, z] = null;
+            }
+        }
+        if (y < boardHeight - 2 && bubbles[x, y + 1, z] != null)
+        {
+            if (color == bubbles[x, y + 1, z].gameObject.GetComponentInChildren<Renderer>().material.color)
+            {
+                Destroy(bubbles[x, y + 1, z]);
+                bubbles[x, y + 1, z] = null;
+            }
+        }
+
+        if (z > 0 && bubbles[x, y, z - 1] != null)
+        {
+            if (color == bubbles[x, y, z - 1].gameObject.GetComponentInChildren<Renderer>().material.color)
+            {
+                Destroy(bubbles[x, y, z - 1]);
+                bubbles[x, y, z - 1] = null;
+            }
+        }
+        if (z < boardDepth - 2 && bubbles[x, y, z + 1] != null)
+        {
+            if (color == bubbles[x, y, z + 1].gameObject.GetComponentInChildren<Renderer>().material.color)
+            {
+                Destroy(bubbles[x, y, z + 1]);
+                bubbles[x, y, z + 1] = null;
+            }
+        }
+
+        Destroy(bubbles[x, y, z]);
+        bubbles[x, y, z] = null;
     }
 }

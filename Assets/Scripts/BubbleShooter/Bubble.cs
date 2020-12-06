@@ -8,6 +8,9 @@ public class Bubble : MonoBehaviour
     private GameObject bubble;
     private Renderer bubbleRenderer;
 
+    [SerializeField]
+    private BubblesWall bubblesWall;
+
     public void Start()
     {
         bubbleRenderer = bubble.GetComponent<Renderer>();
@@ -19,7 +22,7 @@ public class Bubble : MonoBehaviour
         bubbleRenderer.material = newMaterial;
 
         GameObject bbl = Instantiate(bubble, trans.position, Quaternion.identity);
-        return gameObject;
+        return bbl;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -29,7 +32,8 @@ public class Bubble : MonoBehaviour
             Color color = collision.gameObject.GetComponent<Renderer>().material.color;
 
             if(bubbleRenderer.material.color == color)
-                Destroy(gameObject);
+                bubblesWall.DestroyNeighbours(this.transform, bubbleRenderer.material.color);
+
             Destroy(collision.gameObject);
         }
     }
