@@ -12,18 +12,24 @@ public class BubbleScore : MonoBehaviour
     private BubblesWall bubblesWall;
     private int score = 0;
     [SerializeField]
-    private TextMeshPro text;
+    private TextMeshProUGUI text;
 
+    /// <summary>
+    /// Gets the text component at the start and sets to 0.
+    /// </summary>
     void Start()
     {
-        text = GetComponent<TextMeshPro>();
-/*        text.text = score.ToString();*/
+        text = GetComponent<TextMeshProUGUI>();
+        text.text = score.ToString();
     }
 
+    /// <summary>
+    /// Updates the score value.
+    /// </summary>
     void Update()
     {
-/*        score = bubblesWall.GetPoints();
+        score = bubblesWall.GetPoints();
 
-        text.text = score.ToString();*/
+        text.text = score.ToString();
     }
 }

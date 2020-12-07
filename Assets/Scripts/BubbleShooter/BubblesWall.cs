@@ -62,7 +62,7 @@ public class BubblesWall : MonoBehaviour
                 points += 1;
             }
         }
-        if (x < boardWidth - 2 && bubbles[x + 1, y, z] != null)
+        if (x < boardWidth - 1 && bubbles[x + 1, y, z] != null)
         {
             if (color == bubbles[x + 1, y, z].gameObject.GetComponentInChildren<Renderer>().material.color)
             {
@@ -83,7 +83,7 @@ public class BubblesWall : MonoBehaviour
                 points += 1;
             }
         }
-        if (y < boardHeight - 2 && bubbles[x, y + 1, z] != null)
+        if (y < boardHeight - 1 && bubbles[x, y + 1, z] != null)
         {
             if (color == bubbles[x, y + 1, z].gameObject.GetComponentInChildren<Renderer>().material.color)
             {
@@ -104,7 +104,7 @@ public class BubblesWall : MonoBehaviour
                 points += 1;
             }
         }
-        if (z < boardDepth - 2 && bubbles[x, y, z + 1] != null)
+        if (z < boardDepth - 1 && bubbles[x, y, z + 1] != null)
         {
             if (color == bubbles[x, y, z + 1].gameObject.GetComponentInChildren<Renderer>().material.color)
             {
@@ -119,6 +119,8 @@ public class BubblesWall : MonoBehaviour
         bubbles[x, y, z] = null;
 
         points += 1;
+
+        Debug.Log(points);
     }
 
     /// <summary>
