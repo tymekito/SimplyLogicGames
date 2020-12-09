@@ -2302,7 +2302,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Simply Logic Games
+  m_text: Simple Logic Games
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b427cce4f42f30245aff7f48fba49d9b, type: 2}
   m_sharedMaterial: {fileID: 5867009239718861706, guid: b427cce4f42f30245aff7f48fba49d9b,

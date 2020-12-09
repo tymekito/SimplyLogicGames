@@ -21,10 +21,10 @@ public class MainMenu : MonoBehaviour
         Debug.Log(gameName.ToString());
         if(gameName == "Tetris (UnityEngine.GameObject)")
             SceneManager.LoadScene("Tetris");
-        if (gameName == "Checkers (UnityEngine.GameObject)")
-            SceneManager.LoadScene("Checkers");
-        if (gameName == "BubbleShooter (UnityEngine.GameObject)")
+        else if(gameName == "BubbleShooter (UnityEngine.GameObject)")
             SceneManager.LoadScene("BubbleShooter");
+        else
+            SceneManager.LoadScene("SampleScene");
     }
 
     /// <summary>
