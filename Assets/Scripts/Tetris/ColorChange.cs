@@ -1,22 +1,18 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// The color change script. It randomly chooses color for the newly spawned tetris block.
+/// </summary>
+
 public class ColorChange : MonoBehaviour
 {
     [SerializeField]
     private GameObject[] cubes;
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    public void randomColor()
+    /// <summary>
+    /// Randomly chooses the color and then sets for cubes in tetris block
+    /// </summary>
+    public void RandomColor()
     {
         Color color = Random.ColorHSV();
         foreach (GameObject cube in cubes)

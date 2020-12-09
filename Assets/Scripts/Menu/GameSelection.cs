@@ -4,19 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-/// <summary>Class <c>GameSelection</c> supports game selection in main menu
+/// <summary>
+/// Class <c>GameSelection</c> supports game selection in main menu
+/// </summary>
 public class GameSelection : MonoBehaviour
 {
     private int currentGame;
     private Button leftButton;
     private Button rightButton;
     public static string gameName;
-    //{
-
-    //    get { return gameName; }
-    //    set { gameName = value; }
-    //} // { get => gameName; set => gameName = value; }
-    // Start is called before the first frame update
     void Start()
     {
         SelectGame(0);
@@ -28,7 +24,9 @@ public class GameSelection : MonoBehaviour
 
     }
 
-    /// <summary>method <c>SelectGame</c> set active selected game</summary>
+    /// <summary>
+    /// method <c>SelectGame</c> set active selected game
+    /// </summary>
     private void SelectGame(int id)
     {
         for (int i = 0; i < transform.childCount; i++)
@@ -38,7 +36,9 @@ public class GameSelection : MonoBehaviour
         gameName = transform.GetChild(currentGame).gameObject.ToString();
     }
 
-    /// <summary>method <c>ChangeGame</c> choose suitable game index</summary>
+    /// <summary>
+    /// method <c>ChangeGame</c> choose suitable game index
+    /// </summary>
     public void ChangeGame(int change)
     {
         if (currentGame == transform.childCount - 1 && change > 0)
